@@ -1,26 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import  { useLoaderData } from 'react-router-dom'
+import UserData from '../UserData/UserData';
 
 const Github = () => {
     
-  const data = useLoaderData()
+  //const data = useLoaderData()
 
     // const [data , setData] = useState([]);
     // useEffect(() => {
-    //    fetch('https://api.github.com/users/Shashank-09')
+    //    fetch('https://reqres.in/api/users/')
     //    .then(response => response.json())
     //    .then(data => {
     //       setData(data)
     //    })
+    //    console.log(data);
+      
     // } , [])
+
+    const [data , setData ]  = useState([]);
+    useEffect(() => {
+      fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        setData(data)
+      } )
+      
+    })
+    
+
+
+
+
   return (
-    <div className='text-center m-4 bg-gray-600 text-white p-4 text-3xl '>Github Followers: {data.followers} </div>
+    <>
+     <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th> 
+        </tr>
+      </thead>
+      <tbody>
+         <UserData  data={data}/>
+      </tbody>
+     </table>
+  
+    
+  
+    
+    </>
+
   )
+  
 }
 
 export default Github;
 
-export  const githubInfoLoader = async () => {
-  const response = await fetch('https://api.github.com/users/Shashank-09')
-  return response.json()
-}
+// // export  const githubInfoLoader = async () => {
+// //   const response = await fetch('https://api.github.com/users/Shashank-09')
+// //   return response.json()
+// // }
+
