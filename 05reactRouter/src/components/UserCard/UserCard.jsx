@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react'
 
 const UserCard = () => {
     const [card , setCard] = useState([])
-    //  const call =  async () => {
-    //         const res = await  fetch('https://reqres.in/api/users/')
-    //         const json = await res.json()
-    //         setCard(json.data)
+     const call =  async () => {
+            const res = await  fetch('https://reqres.in/api/users/')
+            const json = await res.json()
+            setCard(json.data)
 
     //  }
     useEffect(() => {
